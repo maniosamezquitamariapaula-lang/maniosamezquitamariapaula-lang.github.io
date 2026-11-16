@@ -1,0 +1,355 @@
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYBERDOLL ★ Y2K STORE</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Righteous&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--pink-neon:#ff1493;--pink:#ff4fc3;--baby-pink:#ffb6e6;--purple-neon:#b000ff;--purple:#7a00ff;--blue-neon:#00d9ff;--yellow-neon:#fff000;--green-neon:#a8ff00;--shadow-pink:0 0 8px #ff1493,0 0 18px #ff1493;--shadow-blue:0 0 8px #00d9ff,0 0 18px #00d9ff;}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:radial-gradient(circle at 10% 10%,rgba(255,20,147,.3),transparent 25%),radial-gradient(circle at 90% 20%,rgba(0,217,255,.22),transparent 25%),radial-gradient(circle at 50% 80%,rgba(176,0,255,.25),transparent 30%),linear-gradient(135deg,#120016,#26002f 45%,#080014);color:white;font-family:"Share Tech Mono",monospace;min-height:100vh;overflow-x:hidden}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:14px 25px;background:linear-gradient(90deg,rgba(255,20,147,.96),rgba(176,0,255,.96),rgba(0,217,255,.9));border-bottom:4px solid white;box-shadow:0 0 15px white,0 0 25px var(--pink-neon)}
+.logo img{width:190px;max-width:100%;height:auto;display:block;filter:drop-shadow(0 0 10px var(--pink-neon))}
+.nav-links{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:9px}
+.nav-links button{border:2px solid white;border-radius:20px;padding:10px 13px;color:white;background:linear-gradient(180deg,#ff8ee0,#ff1493,#a500ff);font-family:"Orbitron",sans-serif;font-size:11px;font-weight:900;box-shadow:0 0 8px var(--pink-neon);transition:.2s}
+.nav-links button:hover{transform:translateY(-3px);box-shadow:var(--shadow-blue)}
+.user-badge{display:none;align-items:center;gap:8px;padding:8px 14px;border:2px solid var(--yellow-neon);border-radius:20px;background:rgba(0,0,0,.4);font-family:"Orbitron",sans-serif;font-size:11px;font-weight:800;box-shadow:0 0 10px var(--yellow-neon)}
+.user-badge.show{display:flex}
+.hero{min-height:590px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:35px;padding:70px 8%;border-bottom:5px double var(--pink-neon)}
+.hero h1{font-family:"Righteous",cursive;font-size:clamp(65px,9vw,135px);line-height:.85;color:white;text-shadow:5px 5px 0 var(--pink-neon),10px 10px 0 var(--purple-neon),15px 15px 0 var(--blue-neon),0 0 25px var(--pink-neon);transform:rotate(-2deg)}
+.hero h1 span{display:block;margin:15px 0 0 25px;color:var(--yellow-neon);font-size:.55em}
+.hero-subtitle{margin-top:35px;color:var(--baby-pink);font-family:"Orbitron",sans-serif;font-size:20px}
+.hero-image img{width:min(100%,450px);max-height:500px;object-fit:contain;border:4px solid white;border-radius:24px;box-shadow:0 0 25px var(--pink-neon),0 0 45px var(--blue-neon)}
+.models-section,.categories{padding:65px 7%;text-align:center}
+.section-head small{color:var(--green-neon);font-family:"Orbitron",sans-serif;font-weight:bold;letter-spacing:4px}
+.section-head h2,.catalog-head h2{margin:12px 0;font-family:"Righteous",cursive;font-size:clamp(32px,5vw,52px);text-shadow:3px 3px 0 var(--pink-neon),6px 6px 0 var(--blue-neon)}
+.models-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:25px;margin-top:35px}
+.model-slot{height:400px;padding:12px;border:4px dashed var(--blue-neon);border-radius:25px;background:linear-gradient(135deg,rgba(255,20,147,.2),rgba(0,217,255,.12));box-shadow:0 0 15px var(--blue-neon);overflow:hidden}
+.model-slot img{width:100%;height:100%;object-fit:contain;border-radius:18px;display:block}
+.categories{background:linear-gradient(180deg,rgba(255,20,147,.08),rgba(0,217,255,.08))}
+.categories-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:35px}
+.category-card{min-height:230px;border:3px solid white;border-radius:22px;overflow:hidden;position:relative;cursor:pointer;background:#18001f;box-shadow:0 0 12px var(--pink-neon);transition:.25s}
+.category-card:hover{transform:translateY(-7px);box-shadow:var(--shadow-blue)}
+.category-card img{width:100%;height:230px;object-fit:cover;display:block;opacity:.86}
+.category-name{position:absolute;bottom:0;left:0;right:0;padding:14px 6px;background:linear-gradient(90deg,var(--pink-neon),var(--purple-neon),var(--blue-neon));font-family:"Orbitron",sans-serif;font-size:12px;font-weight:900}
+#catalogo{padding:65px 6%}.catalog-head{text-align:center;margin-bottom:30px}.catalog-head p{color:var(--baby-pink)}
+.tools{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+.tools input,.tools select{padding:13px 17px;border:2px solid white;border-radius:20px;background:#25002f;color:white;box-shadow:0 0 10px var(--pink-neon);outline:none}
+.tools input{width:min(330px,100%)}
+.products-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.product-card{padding:16px;min-width:0;border:3px solid white;border-radius:22px;background:linear-gradient(145deg,rgba(255,20,147,.2),rgba(0,217,255,.1),rgba(176,0,255,.2));box-shadow:0 0 10px rgba(255,20,147,.65);transition:.25s;display:flex;flex-direction:column}
+.product-card img{width:100%;height:320px;object-fit:contain;border:2px solid var(--pink-neon);border-radius:18px;padding:5px;background:rgba(255,255,255,.05);box-shadow:0 0 12px var(--pink-neon)}
+.product-card h3{margin-top:15px;font-family:"Orbitron",sans-serif;font-size:15px}
+.product-card p{margin-top:8px;color:#ffc8ed;font-size:13px;min-height:45px}
+.price{margin:12px 0;color:var(--yellow-neon);font-family:"Orbitron",sans-serif;font-weight:900;font-size:19px}
+.size-area{margin:10px 0 12px 0;display:flex;flex-wrap:wrap;gap:6px}
+.size-label{width:100%;font-family:"Orbitron",sans-serif;font-size:10px;color:var(--baby-pink);letter-spacing:1px;margin-bottom:2px}
+.size-btn{min-width:38px;padding:6px 8px;border:2px solid white;border-radius:12px;background:#1a0022;color:white;font-family:"Orbitron",sans-serif;font-size:11px;font-weight:800;transition:.2s}
+.size-btn.active{background:linear-gradient(90deg,var(--pink-neon),var(--blue-neon));border-color:var(--yellow-neon);box-shadow:0 0 10px var(--yellow-neon);transform:scale(1.1)}
+.add-btn{width:100%;padding:12px 8px;font-size:11px;margin-top:auto;border:3px solid white;border-radius:25px;color:white;background:linear-gradient(90deg,var(--pink-neon),var(--purple-neon),var(--blue-neon));font-family:"Orbitron",sans-serif;font-weight:900;box-shadow:var(--shadow-pink);transition:.2s}
+.cart-panel{position:fixed;z-index:2000;top:0;right:-430px;width:min(400px,100%);height:100vh;padding:25px;overflow-y:auto;background:#21002d;border-left:4px solid var(--blue-neon);box-shadow:-5px 0 25px var(--blue-neon);transition:right .3s ease}
+.cart-panel.open{right:0}
+.cart-panel h2,.modal-content h2{font-family:"Orbitron",sans-serif;color:var(--baby-pink);margin-bottom:20px;font-size:21px}
+.close-btn{float:right;width:35px;height:35px;border:2px solid white;border-radius:50%;color:white;background:var(--pink-neon);font-size:20px}
+.cart-item{padding:15px 0;border-bottom:1px solid var(--pink-neon)}
+.cart-item .size-tag{display:inline-block;margin-top:4px;padding:3px 8px;border:1px solid var(--blue-neon);border-radius:10px;background:rgba(0,217,255,.15);color:var(--blue-neon);font-size:11px;font-weight:900}
+.cart-controls{display:flex;align-items:center;gap:10px;margin-top:10px}
+.cart-controls button{width:30px;height:30px;border:1px solid white;border-radius:50%;color:white;background:var(--purple);font-size:18px}
+.cart-total{margin:25px 0;color:var(--yellow-neon);font-family:"Orbitron",sans-serif;font-size:18px}
+.checkout-btn{width:100%;padding:14px;border:3px solid white;border-radius:25px;color:white;background:linear-gradient(90deg,var(--pink-neon),var(--purple-neon),var(--blue-neon));font-family:"Orbitron",sans-serif;font-weight:900;box-shadow:var(--shadow-pink)}
+.modal{display:none;position:fixed;inset:0;z-index:3000;padding:20px;align-items:center;justify-content:center;overflow-y:auto;background:rgba(0,0,0,.84)}
+.modal.active{display:flex}
+.modal-content{width:min(600px,100%);max-height:90vh;overflow-y:auto;padding:28px;border:3px solid var(--blue-neon);border-radius:25px;background:linear-gradient(145deg,#28002f,#130018);box-shadow:var(--shadow-blue)}
+.modal-content label{display:block;margin:14px 0 6px}
+.modal-content input,.modal-content select,.modal-content textarea{width:100%;padding:12px;border:2px solid var(--pink-neon);border-radius:12px;background:#190021;color:white}
+.modal-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.modal-actions button{flex:1;min-width:120px;padding:12px;border:2px solid white;border-radius:20px;color:white;background:linear-gradient(90deg,var(--pink-neon),var(--purple-neon));font-family:"Orbitron",sans-serif;font-weight:bold}
+footer{padding:35px 20px;text-align:center;background:rgba(0,0,0,.35);border-top:3px solid var(--pink-neon);color:var(--baby-pink);line-height:1.9}
+.mision-vision{padding:70px 7%;display:grid;grid-template-columns:1fr 1fr;gap:25px;background:linear-gradient(180deg,rgba(0,217,255,.08),rgba(255,20,147,.12));border-top:3px dashed var(--blue-neon);border-bottom:3px dashed var(--pink-neon);}
+.mv-card{padding:25px;border:3px solid white;border-radius:22px;background:linear-gradient(145deg,rgba(255,20,147,.22),rgba(122,0,255,.2));box-shadow:0 0 18px var(--pink-neon);text-align:left;}
+.mv-card h3{font-family:"Orbitron";color:var(--yellow-neon);font-size:18px;margin-bottom:12px;letter-spacing:2px;}
+.mv-card p{color:#ffc8ed;line-height:1.7;font-size:14px;}
+
+.account-links{margin-top:18px;text-align:center;line-height:2;color:#ffc8ed;font-size:13px}
+.account-links button{border:0;background:none;color:var(--blue-neon);font-weight:bold;text-decoration:underline;cursor:pointer;font-family:inherit;font-size:13px}
+.success-logo{display:block;width:min(190px,65%);max-height:130px;object-fit:contain;margin:0 auto 18px;filter:drop-shadow(0 0 12px var(--pink-neon))}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-row>div{min-width:0}
+#checkoutModal .modal-content{max-height:88vh;overflow-y:auto}
+#checkoutModal h3{margin:18px 0 10px;color:var(--pink-neon);font-family:"Orbitron",sans-serif;font-size:13px}
+.small-note{font-size:11px;line-height:1.5;color:#ffc4ee;margin:8px 0}
+@media(max-width:520px){.form-row{grid-template-columns:1fr}}
+
+
+.mision-vision{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:25px;padding:65px 7%;width:100%;position:relative;clear:both;visibility:visible;opacity:1}
+.mv-card{display:block!important;min-width:0}
+.mv-card p{display:block!important;color:#ffc8ed;line-height:1.75;font-size:14px}
+.mv-card h3{display:block!important}
+.mv-vision{border-color:var(--blue-neon);box-shadow:0 0 18px var(--blue-neon)}
+.mv-vision h3{color:var(--blue-neon)}
+@media(max-width:700px){.mision-vision{grid-template-columns:1fr;padding:45px 6%}}
+
+</style>
+</head>
+<body>
+<nav>
+<a href="#" class="logo" onclick="goHome();return false;"><img src="logo.png" alt="CYBERDOLL"></a>
+<div class="nav-links">
+<button onclick="scrollToCategories()">CATEGORÍAS</button>
+<button type="button" id="loginBtn" onclick="openAccount('loginModal')">INICIAR SESIÓN ♡</button>
+<button id="registerBtn" onclick="openAccount('registerModal')">CREAR CUENTA ★</button>
+<div id="userBadge" class="user-badge"><span id="userBadgeName">USER</span><button onclick="logoutAccount()" style="padding:4px 8px;font-size:9px;background:#ff1493">SALIR</button></div>
+<button onclick="openCart()">MI BOLSA 🛍️ (<span id="cartCount">0</span>)</button>
+</div>
+</nav>
+<header class="hero" id="inicio"><div class="hero-text"><h1>CYBER<span>DOLL</span></h1><p class="hero-subtitle">TU ESTILO. TUS REGLAS. TU ERA Y2K. ★</p></div><div class="hero-image"><img src="portada.png" alt="Moda Y2K"></div></header>
+<section class="models-section"><div class="section-head"><small>★ NUESTRA INSPIRACIÓN ★</small><h2>MODELOS CYBERDOLL</h2><p>Encuentra tu próximo look favorito.</p></div><div class="models-grid"><div class="model-slot"><img src="modelo1.jpg"></div><div class="model-slot"><img src="modelo2.jpg"></div><div class="model-slot"><img src="modelo3.jpg"></div></div></section>
+<section class="mision-vision" id="mision">
+  <div class="mv-card">
+    <h3>★ NUESTRA MISIÓN ★</h3>
+    <p>
+      En <b>CYBERDOLL</b> buscamos ofrecer productos inspirados en la estética Y2K,
+      como ropa, calzado, accesorios, bolsos, maquillaje y tecnología.
+      Queremos combinar las tendencias de los años 2000 con estilos modernos,
+      brindando artículos originales y a precios accesibles. Nuestra misión
+      es ofrecer una experiencia de compra cómoda y agradable, donde cada
+      cliente pueda encontrar productos que reflejen su personalidad,
+      creatividad y estilo.
+    </p>
+  </div>
+  <div class="mv-card mv-vision">
+    <h3>★ NUESTRA VISIÓN ★</h3>
+    <p>
+      Nuestra visión es convertirnos en una tienda en línea reconocida en México
+      por nuestra variedad de productos y nuestra inspiración en la moda Y2K.
+      Buscamos crecer como marca, mantenernos al día con las nuevas tendencias
+      y ofrecer constantemente artículos novedosos. Queremos crear una comunidad
+      donde cada persona pueda expresar libremente su estilo y encontrar en
+      CYBERDOLL un espacio que represente la esencia, creatividad y actitud
+      de los años 2000.
+    </p>
+  </div>
+</section>
+<section class="categories" id="categorias"><div class="section-head"><small>★ ENCUENTRA TU VIBE ★</small><h2>COMPRA POR CATEGORÍA</h2><p>Elige una categoría para ver sus productos.</p></div><div class="categories-grid"><div class="category-card" onclick="showCategory('Ropa Y2K')"><img src="categoria-ropa.jpg"><div class="category-name">ROPA Y ZAPATOS Y2K</div></div><div class="category-card" onclick="showCategory('Accesorios Y2K')"><img src="categoria-accesorios.jpg"><div class="category-name">ACCESORIOS Y2K</div></div><div class="category-card" onclick="showCategory('Bolsos y Carteras')"><img src="categoria-bolsos.jpg"><div class="category-name">BOLSOS Y CARTERAS</div></div><div class="category-card" onclick="showCategory('Maquillaje y Belleza')"><img src="categoria-belleza.jpg"><div class="category-name">MAQUILLAJE Y BELLEZA</div></div><div class="category-card" onclick="showCategory('Tecnología y Entretenimiento')"><img src="categoria-tecnologia.jpg"><div class="category-name">TECNOLOGÍA</div></div></div></section>
+
+<section id="catalogo" style="display:none"><div class="catalog-head"><h2 id="catalogTitle">★ CATÁLOGO ★</h2><p>Elige tu talla y agrégalo a la bolsa.</p></div><div class="tools"><input id="search" type="text" placeholder="Buscar producto..." oninput="renderProducts()"><select id="sort" onchange="renderProducts()"><option value="default">Ordenar por...</option><option value="low">Precio: menor a mayor</option><option value="high">Precio: mayor a menor</option><option value="name">Nombre A-Z</option></select></div><div class="products-grid" id="productsGrid"></div><aside class="cart-panel" id="cartPanel"><button class="close-btn" onclick="closeCart()">×</button><h2>★ TU BOLSA ★</h2><div id="cartItems"></div><div class="cart-total" id="cartTotal">TOTAL: $0 MXN</div><button class="checkout-btn" onclick="openCheckout()">CONTINUAR AL PAGO</button></aside>
+<div class="modal" id="loginModal"><div class="modal-content"><button class="close-btn" onclick="closeModal('loginModal')">×</button><h2>★ BIENVENIDA ★</h2><form onsubmit="event.preventDefault();loginAccount()"><label>Correo</label><input id="loginEmail" type="email" required><label>Contraseña</label><input id="loginPassword" type="password" required><div class="modal-actions"><button type="submit">INICIAR SESIÓN</button></div></form><div class="account-links">¿Aún no tienes cuenta? <button type="button" onclick="switchAccount('loginModal','registerModal')">Crear cuenta ★</button><br>¿Olvidaste tu contraseña? <button type="button" onclick="switchAccount('loginModal','recoverModal')">Recuperar cuenta</button></div></div></div>
+<div class="modal" id="registerModal"><div class="modal-content"><button class="close-btn" onclick="closeModal('registerModal')">×</button><h2>★ ÚNETE ★</h2><form onsubmit="event.preventDefault();registerAccount()"><label>Nombre</label><input id="registerName" type="text" required><label>Correo</label><input id="registerEmail" type="email" required><label>Contraseña</label><input id="registerPassword" type="password" minlength="8" required><label>Confirma</label><input id="confirmPassword" type="password" minlength="8" required><div class="modal-actions"><button type="submit">CREAR CUENTA ★</button></div></form></div></div>
+<div class="modal" id="recoverModal"><div class="modal-content"><button class="close-btn" onclick="closeModal('recoverModal')">×</button><h2>★ RECUPERAR CUENTA ★</h2><form onsubmit="event.preventDefault();recoverAccount()"><label>Correo registrado</label><input id="recoverEmail" type="email" required><label>Nueva contraseña</label><input id="recoverNewPass" type="password" minlength="8" required><div class="modal-actions"><button type="submit">ACTUALIZAR CONTRASEÑA</button></div></form><div class="account-links"><button type="button" onclick="switchAccount('recoverModal','loginModal')">Volver a iniciar sesión</button></div></div></div>
+<div class="modal" id="checkoutModal">
+<div class="modal-content">
+<button class="close-btn" onclick="closeModal('checkoutModal')">×</button>
+<h2>★ DATOS DE COMPRA ★</h2>
+<form id="checkoutForm" onsubmit="event.preventDefault();finishCheckout()">
+<h3>★ Datos del cliente</h3>
+<label>Nombre completo</label><input id="customerName" type="text" autocomplete="name" required>
+<label>Correo electrónico</label><input id="customerEmail" type="email" autocomplete="email" required>
+<label>Teléfono</label><input id="customerPhone" type="tel" autocomplete="tel" placeholder="10 dígitos" pattern="[0-9]{10}" maxlength="10" required>
+<h3>★ Dirección de envío</h3>
+<label>Calle</label><input id="customerStreet" type="text" autocomplete="address-line1" required>
+<div class="form-row">
+<div><label>Número exterior</label><input id="customerExt" type="text" required></div>
+<div><label>Número interior (opcional)</label><input id="customerInt" type="text"></div>
+</div>
+<label>Colonia</label><input id="customerColony" type="text" required>
+<div class="form-row">
+<div><label>Ciudad</label><input id="customerCity" type="text" required></div>
+<div><label>Estado</label><input id="customerState" type="text" required></div>
+</div>
+<label>Código postal</label><input id="customerZip" type="text" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="5 dígitos" required>
+<label>Referencias para la entrega (opcional)</label><textarea id="customerReference" placeholder="Color de casa, entre calles, etc."></textarea>
+<h3>★ Método de pago</h3>
+<label>Selecciona cómo deseas pagar</label>
+<select id="paymentMethod" onchange="toggleCardFields()" required>
+<option value="">Selecciona una opción</option>
+<option value="tarjeta">Tarjeta (DEMO)</option>
+<option value="contraentrega">Pago al recibir</option>
+</select>
+<div id="cardFields" style="display:none">
+<label>Nombre en la tarjeta (DEMO)</label><input id="cardName" type="text" autocomplete="cc-name">
+<label>Número de tarjeta (DEMO)</label><input id="cardNumber" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" maxlength="19">
+<div class="form-row">
+<div><label>Vencimiento (MM/AA)</label><input id="cardExpiry" type="text" placeholder="MM/AA" maxlength="5" autocomplete="cc-exp"></div>
+<div><label>CVV (DEMO)</label><input id="cardCvv" type="password" inputmode="numeric" placeholder="123" maxlength="4" autocomplete="cc-csc"></div>
+</div>
+<p class="small-note">Formulario de demostración escolar. No ingreses datos de una tarjeta real.</p>
+</div>
+<div class="modal-actions"><button type="submit">CONFIRMAR PEDIDO ★</button></div>
+</form>
+</div>
+</div>
+<div class="modal" id="orderSuccessModal"><div class="modal-content" style="text-align:center;border-color:var(--green-neon)"><img src="logo2.png" alt="Logo CYBERDOLL" class="success-logo"><h2>¡PEDIDO CONFIRMADO! ★</h2><p id="successText"></p><div id="successSummary" style="text-align:left;background:rgba(255,255,255,.06);padding:14px;border-radius:14px;font-size:13px"></div><div class="modal-actions"><button onclick="closeModal('orderSuccessModal');goHome();" style="width:100%">SEGUIR COMPRANDO ★</button></div></div></div>
+<footer><p><strong>CYBERDOLL ★</strong> © 2026 Tienda de demostración escolar.</p></footer>
+<script>
+const products = [
+{category:"Ropa Y2K",name:"Top rosa brillante",description:"Top inspirado en la moda de los años 2000. Doble capa con efecto halter, estampado gráfico Y2K.",price:249,image:"top-rosa-brillante.jpg",sizes:["XS","S","M"]},
+{category:"Ropa Y2K",name:"Pants gris guitarra",description:"Pants baggy con estampado de guitarra.",price:358,image:"pants-guitarra.jpg",sizes:["XS","S","M"]},
+{category:"Ropa Y2K",name:"Top floral oriental",description:"Top satinado con estampado floral y detalle de corset lateral.",price:229,image:"top-floral-oriental.jpg",sizes:["XS","S","M"]},
+{category:"Ropa Y2K",name:"Minifalda piano",description:"Minifalda tableada con estampado de teclas de piano.",price:249,image:"minifalda-piano.jpg",sizes:["XS","S","M"]},
+{category:"Ropa Y2K",name:"Botas altas con hebilla",description:"Botas altas de tacón con punta fina y hebilla grande, inspiradas en la moda de los años 2000.",price:749,image:"botas-hebilla-y2k.jpg",sizes:["22","22.5","23","23.5","24","24.5","25","25.5","26","26.5"],isShoes:true,codigo:"Y2K-BOT-HEB"},
+{category:"Ropa Y2K",name:"Chaqueta de cuero con peluche",description:"Chaqueta de cuero con cuello y puños de peluche voluminoso, inspirada en la moda de los años 2000.",price:599,image:"chaqueta-cuero-peluche.jpg",sizes:["XS","S","M"]},
+{category:"Ropa Y2K",name:"Bikini geisha floral",description:"Conjunto de bikini verde con estampado de geisha y flores, inspirado en la moda de los años 2000.",price:149,image:"bikini-geisha-floral.jpg",sizes:["XS","S","M"]},
+{category:"Ropa Y2K",name:"Chaqueta denim militar vintage",description:"Chaqueta de mezclilla deslavada estilo militar con doble botonadura metálica y detalle acampanado en mangas, inspirada en la moda de los años 2000.",price:599,image:"chaqueta-denim-militar.jpg",sizes:["XS","S","M","L"],codigo:"Y2K-CHQ-DEN-MIL"},
+{category:"Ropa Y2K",name:"Tenis de cuña con estoperoles",description:"Tenis botín de plataforma oculta con correas y estoperoles metálicos, inspirados en la moda de los años 2000.",price:649,image:"tenis-cuña-estoperoles.jpg",sizes:["22","22.5","23","23.5","24","24.5","25","25.5","26"],codigo:"Y2K-TEN-CUNA-EST",isShoes:true},
+{category:"Ropa Y2K",name:"Top lencero calaveras verde",description:"Top de encaje con estampado de calaveras en verde neón y detalle de moño, inspirado en la moda de los años 2000.",price:229,image:"top-calaveras-verde.jpg",sizes:["XS","S","M","L"],codigo:"Y2K-TOP-CALA-VER"},
+{category:"Ropa Y2K",name:"Jeans acampanado floral",description:"Jeans acampanado deslavado en negro con bordado floral blanco, inspirado en la moda de los años 2000.",price:459,image:"jeans-floral-acampanado.jpg",sizes:["XS","S","M","L"],codigo:"Y2K-JEAN-FLOR-NEG"},
+{category:"Ropa Y2K",name:"Top halter gris calavera",description:"Top halter gris con escote cascada y estampado de calavera y brillos, inspirado en la moda de los años 2000.",price:269,image:"top-halter-calavera-gris.jpg",sizes:["XS","S","M","L"],codigo:"Y2K-TOP-HALT-CALA"},
+{category:"Ropa Y2K",name:"Vestido largo lunares",description:"Vestido largo blanco con lunares negros, escote corazón y drapeado, inspirado en la moda de los años 2000.",price:529,image:"vestido-lunares-largo.jpg",sizes:["XS","S","M","L"],codigo:"Y2K-VEST-LUN-BN"},
+{category:"Ropa Y2K",name:"Vestido celeste estrellas",description:"Vestido largo celeste con tirantes y bordado de estrellas de mar con pedrería multicolor, inspirado en la moda de los años 2000.",price:1689,image:"vestido-celeste-estrellas.jpg",sizes:["XS","S","M","L"],codigo:"Y2K-VEST-CEL-EST"},
+{category:"Ropa Y2K",name:"Sandalia rosa joya tacón mosaico",description:"Sandalia rosa de tacón ancho con estampado mosaico multicolor y pedrería brillante morada y cristal, inspirada en la moda de los años 2000.",price:799,image:"sandalia-rosa-joya-mosaico.jpg",sizes:["22","22.5","23","23.5","24","24.5","25","25.5","26"],codigo:"Y2K-SAND-ROSA-JOYA",isShoes:true},
+{category:"Accesorios Y2K",name:"Playboy Bunny Set Pink Box",description:"Set de collar y aretes con dije de conejito plateado y detalle rosa, en cajita rosa, inspirado en la moda de los años 2000.",price:299,image:"set-playboy-conejito-plata.jpg",codigo:"Y2K-SET-PLAY-PLATA"},
+{category:"Accesorios Y2K",name:"Lentes Y2K Ed Hardy Cross Skull Bling",description:"Lentes de sol sin marco con degradado marrón, patillas negras con estampado de calavera, corazón y cruz con pedrería brillante, inspirados en la moda de los años 2000.",price:349,image:"lentes-cruz-gotica-ed-hardy.jpg",codigo:"Y2K-LEN-CRUZ-ED"},
+{category:"Accesorios Y2K",name:"Lighter Case Angel & Reaper Gothic",description:"Funda metalica plateada para encendedor con diseño de angel y esqueleto alado, estilo gotico inspirado en la moda de los años 2000.",price:249,image:"funda-encendedor-angel-esqueleto.jpg",codigo:"Y2K-FUND-ENC-ANGEL"},
+{category:"Accesorios Y2K",name:"Lentes Cat Eye Teardrop Crystal Lavanda",description:"Lentes Y2K cat eye negros con micas lila y dije de lagrima tornasol colgante, estilo coquette 2000s.",price:349,image:"lentes-cat-eye-teardrop-lavanda.jpg",codigo:"Y2K-LEN-TEAR-LAV"},
+{category:"Accesorios Y2K",name:"Charm Bracelet Everything's Romantic Cross",description:"Brazalete espiral plateado con dijes de cruz, relicario vintage, candado y llave, grabado Everything's Romantic, estilo coquette gotico.",price:399,image:"brac-rom-cross.jpg",codigo:"Y2K-BRAC-ROM-CROSS"},
+{category:"Accesorios Y2K",name:"Gorra Militar Cross Bling Leopard Y2K",description:"Gorra militar cafe con parche cruz con strass y tachas, detalle animal print y bordado tribal, estilo McBling Ed Hardy.",price:379,image:"gorra-cross-leo.jpg",codigo:"Y2K-GORRA-CROSS-LEO"},
+{category:"Accesorios Y2K",name:"Cinto Zebra Studded Spike Y2K",description:"Cinto de peluche con estampado zebra blanco y negro, con piramides metalicas plateadas de 3 filas y hebilla chunky, estilo punk McBling.",price:429,image:"cinto-zebra-spike.jpg",codigo:"Y2K-CINTO-ZEBRA"},
+{category:"Accesorios Y2K",name:"Aretes Bow Heart Music Bling Rosa",description:"Aretes plateados con moño y corazon colgante con clave de sol y cristales rosas, estilo coquette Y2K.",price:249,image:"arete-bow-heart.jpg",codigo:"Y2K-ARETE-BOW-HEART"},
+{category:"Accesorios Y2K",name:"Lentes Cross Shield Affliction Chrome",description:"Lentes Y2K sin marco tipo shield con patillas plateadas en cruz gotica y mica degradada gris, estilo Affliction McBling.",price:399,image:"len-cross-shield.jpg",codigo:"Y2K-LEN-CROSS-SHIELD"},
+{category:"Accesorios Y2K",name:"Gorra Boina Plaid Coquette Roja",description:"Gorra boina tipo newsboy con estampado cuadros tartan rojo y botones con mensaje, estilo coquette vintage Y2K.",price:299,image:"gorra-plaid-roja.jpg",codigo:"Y2K-GORRA-PLAID-ROJA"},
+{category:"Accesorios Y2K",name:"Aretes Fresita Berry Gold Drop",description:"Aretes dorados con doble fresa roja esmaltada colgante con hojitas verdes, estilo coquette kawaii Y2K.",price:199,image:"arete-fresa-gold.jpg",codigo:"Y2K-ARETE-FRESA-GOLD"},
+{category:"Accesorios Y2K",name:"Aretes Escarabajo Boho Pearl Drop",description:"Aretes dorados vintage con escarabajo nacar tornasol, cristales, estrella y perla colgante, estilo boho Y2K.",price:249,image:"arete-scarab-pearl.jpg",codigo:"Y2K-ARETE-SCARAB"},
+{category:"Accesorios Y2K",name:"Anillo Escarabajo Chrome Gotico",description:"Anillo plateado chunky con escarabajo escarabajo rinoceronte 3D, acabado envejecido estilo grunge Y2K.",price:229,image:"anillo-scarab-chrome.jpg",codigo:"Y2K-ANILLO-SCARAB"},
+{category:"Accesorios Y2K",name:"Cinto Star Cow Colorful Studded",description:"Cinto ancho con estampado cow, ondas multicolor rosa morado naranja azul y hebilla estrella plateada con estrellas y estoperoles.",price:429,image:"cinto-star-cow.jpg",codigo:"Y2K-CINTO-STAR-COW"},
+{category:"Accesorios Y2K",name:"Arracadas Spike Leopard Blue Y2K",description:"Arracadas gruesas con picos azules, interior azul cielo y exterior leopardo, estilo punk McBling Y2K.",price:279,image:"arracada-spike-leopard.jpg",codigo:"Y2K-ARRACADA-SPIKE-LEO"},
+{category:"Accesorios Y2K",name:"Aretes Camaron Rosa Kitsch Y2K",description:"Aretes colgantes de camaron rosa nacarado con detalle ojitos negros y poste dorado, estilo kitsch coquette Y2K.",price:199,image:"arete-camaron-rosa.jpg",codigo:"Y2K-ARETE-CAMARON"},
+{category:"Bolsos y Carteras",name:"Bolsa Bunny Rosa Y2K",description:"Bolsa negra vinil charol con bunny rosa grande en frente, correa cadena y asas anchas, estilo McBling Playboy Y2K.",price:549,image:"bolsa-bunny-rosa.jpg",codigo:"Y2K-BOLSA-BUNNY-ROSA"},
+{category:"Bolsos y Carteras",name:"Bolsa Zebra Skull Rosa McBling",description:"Bolsa rosa fucsia con estampado cebra, aplicaciones filigrana con cristales y hebilla calavera plateada, estilo McBling trashy Y2K.",price:599,image:"bolsa-zebra-skull-rosa.jpg",codigo:"Y2K-BOLSA-ZEBRA-SKULL"},
+{category:"Bolsos y Carteras",name:"Bolsa Le Cagole Rosa Croco",description:"Bolsa hobo rosa pastel croco charol con herrajes corazon strass, hebillas, pouch con espejo corazon y zip frontal, estilo Y2K Balenciaga.",price:699,image:"bolsa-cagole-rosa-croco.jpg",codigo:"Y2K-BOLSA-CAGOLE-ROSA"},{category:"Bolsos y Carteras",name:"Bolsa Bauletto Menta Moto",description:"Bolsa bauletto menta pastel piel con bolsillos frontales con broche, hebilla central y argollas plateadas, estilo Y2K coquette.",price:649,image:"bolsa-bauletto-menta.jpg",codigo:"Y2K-BOLSA-MENTA"},
+{category:"Bolsos y Carteras",name:"Bolsa Bowler Negra Polka Scarf",description:"Bolsa bowler negra vinil plisada con asas cortas y mascada negra con lunares blancos amarrada en moño, estilo Y2K coquette.",price:599,image:"bolsa-bowler-negra-polka.jpg",codigo:"Y2K-BOLSA-BOWLER-POLKA"},
+{category:"Bolsos y Carteras",name:"Bolsa Kisslock Bambi Fur Beige",description:"Bolsa beige nude con peluche print Bambi moteado, cierre kisslock bolita dorada y zip frontal, estilo coquette dollette Y2K.",price:649,image:"bolsa-bambi-fur-beige.jpg",codigo:"Y2K-BOLSA-BAMBI-FUR"},
+{category:"Bolsos y Carteras",name:"Cartera Pastel Waffle Check",description:"Cartera compacta acolchada cuadros pastel rosa amarillo verde tipo waffle con placa metalica escudo, cierre zip, estilo Y2K kawaii.",price:349,image:"cartera-pastel-waffle-check.jpg",codigo:"Y2K-CARTERA-WAFFLE-PASTEL"},
+{category:"Bolsos y Carteras",name:"Bolsa Shoulder Floral Rosa Toggle",description:"Bolsa hombro rosa con estampado floral vintage, borde ondulado y dije metalico plateado con cadena, estilo coquette Y2K.",price:579,image:"bolsa-shoulder-floral-rosa-toggle.jpg",codigo:"Y2K-BOLSA-FLORAL-TOGGLE"},
+{category:"Bolsos y Carteras",name:"Bolsa Mariposa Rosa Tassel Perlas",description:"Bolsa figura mariposa rosa pastel bordada con dorado, perlas, dijes colgantes y tres borlas rosas, correa de perlas, estilo kawaii coquette Y2K.",price:699,image:"bolsa-mariposa-rosa-tassel-perlas.jpg",codigo:"Y2K-BOLSA-MARIPOSA-TASSEL"},
+{category:"Bolsos y Carteras",name:"Bolsa Shoulder Vino Lace Bow",description:"Bolsa shoulder baguette vino tinto vinipiel con moño encaje blanco, herraje corazon colgante plateado y doble asa, estilo coquette Y2K lolita.",price:549,image:"bolsa-shoulder-vino-lace-bow.jpg",codigo:"Y2K-BOLSA-VINO-LACE"},
+{category:"Bolsos y Carteras",name:"Bolsa Estrella Clip Rosa Mint",description:"Bolsa mini estrella bicolor mint y rosa pastel con asa superior, clip gigante blanco decorativo y aros metalicos, estilo Y2K Harajuku kawaii 3D.",price:629,image:"bolsa-estrella-clip-rosa-mint.jpg",codigo:"Y2K-BOLSA-ESTRELLA-CLIP"},
+{category:"Bolsos y Carteras",name:"Bolsa Iglu Metalica Ice Home",description:"Bolsa domo figura iglu plateado metalico con textura ladrillos hielo, bolsita lateral puerta Ice Home, aplique eskimo con pelo y dije peces colgantes y trineo, estilo Y2K novelty kitsch.",price:789,image:"bolsa-iglu-metalica-ice-home.jpg",codigo:"Y2K-BOLSA-IGLU-ICE"},
+{category:"Bolsos y Carteras",name:"Bolsa Medusa Beaded Tentaculos",description:"Bolsa esfera figura medusa jellyfish cubierta de pedreria dorada rosada con tapa domo, tentaculos organza rizada con perlas y cristales colgantes, cadena dorada, estilo Y2K novelty coquette.",price:849,image:"bolsa-medusa-beaded-tentaculos.jpg",codigo:"Y2K-BOLSA-MEDUSA-BEAD"},
+{category:"Bolsos y Carteras",name:"Bolsa Clutch Mariposas Crystal Perla",description:"Bolsa clutch domo blanca textura piton con dos mariposas rosas cristal, flores lila con perlas, dije esmeralda colgante y asa cadena plateada, estilo Y2K coquette luxury.",price:799,image:"bolsa-clutch-mariposas-crystal.jpg",codigo:"Y2K-BOLSA-MARIPOSA-CRYSTAL"},
+{category:"Bolsos y Carteras",name:"Clutch Martini Cristal Rhinestone",description:"Clutch figura copa martini cubierta de cristales plateados con aceituna en palillo, tapa espejo, cadena fina, estilo Y2K McBling novelty Judith Leiber.",price:899,image:"clutch-martini-cristal-rhinestone.jpg",codigo:"Y2K-CLUTCH-MARTINI"},
+{category:"Maquillaje y Belleza",name:"Hello Kitty Mirror Compact Silver",description:"Espejo compacto plegable en forma de Hello Kitty con acabado plateado brillante, inspirado en la moda de los años 2000.",price:99,image:"espejo-hello-kitty-plata.jpg",codigo:"Y2K-ESP-HK-PLATA"},
+{category:"Maquillaje y Belleza",name:"Starlight Honey Kiss - Parfum Dorado",description:"Notas: Salida mandarina dorada, estrella de anis y miel clara. Corazon jazmin, ambar vainilla y caramelo salado. Fondo sandalo cremoso, almizcle dorado y azucar morena. Frasco abanico con tapon estrella.",price:279,image:"perfume-mini-estrella-dorada.jpg",codigo:"Y2K-PERFUME-STARLIGHT-HONEY"},
+{category:"Maquillaje y Belleza",name:"Tom Ford Shadow Extreme Sparkling Lavanda",description:"Sombra individual tono lila lavanda con glitter diamante, acabado sparkling espejo, estuche cromado con espejo Tom Ford. Ideal para look coquette Y2K e-girl.",price:199,image:"sombra-tom-ford-lavanda-sparkle.jpg",codigo:"Y2K-SOMBRA-TF-LAVANDA"},
+{category:"Maquillaje y Belleza",name:"Paleta Sombras Cool Tone 16 Tonos Lavanda Ice",description:"Paleta 16 sombras tonos frios: blanco, lila glitter, rosa pastel, nude, celeste helado, lila dusty, mauve sparkle, taupe, azul jeans shimmer, lavanda grisacea, rosa chicle, topo, plateado hielo, violeta intenso, berry mauve y negro glitter. Acabado mate, shimmer y glitter.",price:349,image:"paleta-16-tonos-lavanda-ice.jpg",codigo:"Y2K-PALETA-16-LAVANDA-ICE"},
+{category:"Maquillaje y Belleza",name:"Sombra Duochrome Glitter Rosada Aqua",description:"Sombra individual compacta duocromática rosa malva con glitter aqua tornasol, acabado sparkling metalico, estuche redondo plateado tipo espejo Y2K.",price:189,image:"sombra-duochrome-rosa-aqua.jpg",codigo:"Y2K-SOMBRA-DUOCHROME-ROSA-AQUA"},
+{category:"Maquillaje y Belleza",name:"Labial Cisne Menta Vintage Swan",description:"Labial rojo mate con estuche figura cisne metálico menta tornasol, tapa cola con plumas en relieve, base redonda brillante, estilo vintage Y2K coquette glam. Barra roja intensa.",price:159,image:"labial-cisne-menta-swan.jpg",codigo:"Y2K-LABIAL-CISNE-MENTA"},
+{category:"Maquillaje y Belleza",name:"Labial Vintage Barroco Oro Rojo Gema",description:"Labial rojo cereza cremoso con tubo vintage tallado barroco dorado antiguo, relieve filigrana y gema roja central, tapa con orificio superior. Acabado satinado glam Y2K coquette royal.",price:199,image:"labial-vintage-barroco-oro-gema.jpg",codigo:"Y2K-LABIAL-BARROCO-ORO"},
+{category:"Maquillaje y Belleza",name:"Velvet Blush Balm Oval Rosa Vino",description:"Bálsamo cremoso multiusos labios y mejillas tono vino cereza profundo, estuche oval rosa pastel con espejo interno y acabado gold chrome, textura velvet satinada Y2K coquette",price:189,image:"balm-oval-rosa-vino.jpg",codigo:"Y2K-BALM-VELVET-OVAL-VINO"},
+{category:"Maquillaje y Belleza",name:"Royal Puff Polvera Plata Barroca Vintage",description:"Polvera vintage plata labrada barroca con tapa grabada y borla pompon blanco extra suave, estuche cilíndrico para polvo suelto, estilo coquette royal victoriano Y2K",price:129,image:"polvera-plata-barroca-vintage-puff.jpg",codigo:"Y2K-POLVERA-PLATA-BARROCA-PUFF"},
+{category:"Maquillaje y Belleza",name:"Skull Crush Rizador Pestañas Negro Y2K",description:"Rizador de pestañas negro mate con mango ergonómico y logo calavera y huesos cruzados, curva precisa para efecto pestañas largas rizadas, estilo grunge McBling Tokidoki",price:109,image:"rizador-skull-negro-y2k.jpg",codigo:"Y2K-RIZADOR-SKULL-NEGRO"},
+{category:"Maquillaje y Belleza",name:"Berry Kiss Balm Fresa 3D Doble Tapa",description:"Bálsamo labial y rubor cremoso fresa roja con estuche 3D forma fresa con textura semillitas, doble compartimento y espejito, aroma dulce Y2K kawaii",price:88,image:"balm-fresa-3d-doble.jpg",codigo:"Y2K-BALM-FRESA-3D"},
+{category:"Maquillaje y Belleza",name:"Mascara Mermaid Sailor Ocean Pearls",description:"Rimel negro volumen con tubo celeste decorado con conchas, perlas, red, ancla, coral y timon dorado estilo Flower Knows sirena. Cepillo curvado para pestañas largas y rizadas.",price:69,image:"mascara-mermaid-sailor-pearls.jpg",codigo:"Y2K-MASCARA-MERMAID-SAILOR"},
+{category:"Maquillaje y Belleza",name:"theBalm Schwing Eyeliner Negro Líquido 01",description:"Delineador líquido negro mate con pincel fino preciso, larga duración y trazo intenso, empaque vintage pin-up baseball 1.7ml, acabado cat eye Y2K coquette",price:69,image:"thebalm-schwing-eyeliner-negro.jpg",codigo:"Y2K-LINER-THEBALM-SCHWING-01"},
+{category:"Maquillaje y Belleza",name:"FHF Sweet Cream Body Milk Loción Vaquita",description:"Loción corporal leche dulce con extracto orgánico pepino heirloom, frasco vinagrera vidrio 295ml con tapa cristal, aroma sweet cream, estilo farmhouse cow Y2K",price:489,image:"fhf-sweet-cream-body-milk.jpg",codigo:"Y2K-LOTION-FHF-SWEET-CREAM"},
+{category:"Maquillaje y Belleza",name:"Cherry Vanilla Femmenina Body Mist Gold",description:"Body mist hidratante cherry vanilla con cereza y crema batida, frasco vidrio blanco con etiqueta oval dorada y tapa gold, aroma dulce Y2K",price:349,image:"cherry-vanilla-femmenina-mist.jpg",codigo:"Y2K-MIST-CHERRY-VANILLA-GOLD"},
+{category:"Tecnología y Entretenimiento",name:"Victor Pink TV LCD Rosa 20'' JVC Y2K",description:"Televisor LCD Victor rosa pastel 20 pulgadas con control rosa a juego, bocinas frontales, base giratoria y logo JVC, estética Y2K bedroom coquette 2000s, edición Japón",price:3499,image:"victor-tv-lcd-rosa-20-y2k.jpg",codigo:"Y2K-TV-VICTOR-PINK-20"},
+{category:"Tecnología y Entretenimiento",name:"Casio EX-word Dataplus 4 Plata Y2K Diccionario",description:"Diccionario electrónico Casio EX-word Dataplus 4 plata clamshell con teclado QWERTY, pantalla dual, búsqueda jurisdiction y touchpad, estética Y2K Japanese tech",price:1899,image:"casio-exword-dataplus4-plata.jpg",codigo:"Y2K-CASIO-EXWORD-4-PLATA"},
+{category:"Tecnología y Entretenimiento",name:"Nintendo DS Silver Y2K Consola Plata",description:"Consola Nintendo DS original plata metal con pantalla dual táctil, stylus, slot GBA, sonido estéreo, estética Y2K McBling gamer 2004",price:2499,image:"nintendo-ds-silver-plata-y2k.jpg",codigo:"Y2K-NDS-SILVER-01"},
+{category:"Tecnología y Entretenimiento",name:"Game Boy Advance SP Plata Y2K Consola",description:"Consola GBA SP silver clamshell con luz integrada, pantalla color y batería recargable, diseño compacto metálico, estética Y2K gamer McBling 2003",price:2699,image:"gba-sp-plata-silver-y2k.jpg",codigo:"Y2K-GBA-SP-SILVER-01"},
+{category:"Tecnología y Entretenimiento",name:"GPX Discman Transparente Azul Hielo Y2K",description:"Reproductor CD portátil GPX azul transparente con pantalla digital, anti-skip 40 segundos, audífonos translúcidos a juego, estética Y2K translucent tech 2000s",price:1299,image:"gpx-discman-azul-transparente-y2k.jpg",codigo:"Y2K-DISCMAN-GPX-BLUE-01"},
+{category:"Tecnología y Entretenimiento",name:"Sony Handycam Azul Hielo Kawaii Y2K",description:"Videocámara Sony Handycam azul cielo con lente Carl Zeiss Vario-Tessar, pantalla abatible, stickers 3D kawaii coquette, efecto retro Y2K camcorder 2000s",price:3499,image:"sony-handycam-azul-hielo-kawaii.jpg",codigo:"Y2K-HANDYCAM-SONY-BLUE-KAWAII"},
+{category:"Tecnología y Entretenimiento",name:"Polaroid Cool Cam Lavanda Y2K Lila",description:"Cámara instantánea Polaroid Cool Cam lila pastel 600 film, flash integrado, diseño pop 90s Y2K, estética coquette lilac, edición color block",price:3299,image:"polaroid-cool-cam-lavanda-lila-y2k.jpg",codigo:"Y2K-POLAROID-COOL-LAVANDA"},
+{category:"Tecnología y Entretenimiento",name:"Daewoo Boombox Rosa Plata Y2K con CD Cassette",description:"Boombox Daewoo plata con detalles rosa bubblegum, reproductor CD frontal, cassette auto-stop, radio AM/FM, pantalla digital LED, bocinas estéreo, asa transportable, estética Y2K Bratz 2000s",price:1799,image:"daewoo-boombox-rosa-plata-y2k.jpg",codigo:"Y2K-BOOMBOX-DAEWOO-PINK-01"},
+{category:"Tecnología y Entretenimiento",name:"Sony Walkman MP3 Rosa NWZ-S630 Y2K",description:"Reproductor MP3 Sony Walkman NWZ rosa pastel con pantalla color Music Library, FM radio, audífonos blancos, interfaz icono música Y2K, estética McBling 2008",price:1599,image:"sony-walkman-mp3-rosa-nwz-y2k.jpg",codigo:"Y2K-WALKMAN-SONY-PINK-NWZ"},
+{category:"Tecnología y Entretenimiento",name:"iDog Robot Perro Blanco Transparente Y2K",description:"Juguete robot perro i-Dog blanco con orejas LED transparentes, nariz luminosa, patas articuladas y sensor sonido, reacciona a música MP3, estética Y2K Sega Hasbro 2005",price:1399,image:"idog-robot-perro-blanco-y2k.jpg",codigo:"Y2K-IDOG-ROBOT-WHITE-01"},
+{category:"Tecnología y Entretenimiento",name:"Hiptop Sidekick Plata Y2K Celular QWERTY",description:"Celular Danger Hiptop Jump Sidekick plata con pantalla giratoria Web Browser, teclado QWERTY completo, luces LED azules, estética Y2K celebrity 2003 Paris Hilton",price:3799,image:"hiptop-sidekick-plata-y2k-qwerty.jpg",codigo:"Y2K-HIPTOP-SIDEKICK-SILVER"},
+{category:"Tecnología y Entretenimiento",name:"BlackBerry Rosa Pastel Y2K QWERTY 11:11",description:"Celular BlackBerry rosa pastel con teclado QWERTY completo, trackball central, pantalla motivational NEW MESSAGE, estética Y2K coquette manifestation 2007",price:2899,image:"blackberry-rosa-pastel-y2k-manifest.jpg",codigo:"Y2K-BLACKBERRY-PINK-1111"},
+{category:"Tecnología y Entretenimiento",name:"Samsung Galaxy S Duos La Fleur Rojo Y2K",description:"Celular Samsung Galaxy S Duos La Fleur rojo vino con flores grabadas en tapa trasera, wallpaper chica floral coquette, edición limitada La Fleur 2013, estética Y2K McBling girly",price:2499,image:"samsung-la-fleur-rojo-floral-y2k.jpg",codigo:"Y2K-SAMSUNG-LAFLEUR-ROJO"},
+{category:"Tecnología y Entretenimiento",name:"Sony PSone con Pantalla LCD Combo Y2K",description:"Consola Sony PSone blanca con pantalla LCD abatible redonda 5 pulgadas integrada, bocinas laterales, puertos memory card, diseño portable Y2K 2000, aesthetic gamer bedroom",price:4299,image:"sony-psone-lcd-combo-blanco-y2k.jpg",codigo:"Y2K-PS1-LCD-COMBO-WHITE"},
+{category:"Tecnología y Entretenimiento",name:"Sony PSP Plateado Final Fantasy VII 10th Anniversary Y2K",description:"Consola portátil Sony PSP plata edición Final Fantasy VII 10th Anniversary, grabado Cloud y Sephiroth en tapa, logo PSP cromado, botones clásicos, estética gamer Y2K 2007 coleccionable",price:4999,image:"sony-psp-ffvii-10th-plateado-y2k.jpg",codigo:"Y2K-PSP-FFVII-SILVER-10TH"},
+];
+let currentCategory="";let cart=[];let selectedSizes={};
+function getUsers(){try{return JSON.parse(localStorage.getItem('cyberdoll_users'))||[]}catch{return[]}}
+function saveUsers(u){localStorage.setItem('cyberdoll_users',JSON.stringify(u))}
+function getSession(){try{return JSON.parse(localStorage.getItem('cyberdoll_session'))}catch{return null}}
+function setSession(u){localStorage.setItem('cyberdoll_session',JSON.stringify(u))}
+function clearSession(){localStorage.removeItem('cyberdoll_session')}
+function updateAuthUI(){const s=getSession();const lb=document.getElementById('loginBtn');const rb=document.getElementById('registerBtn');const badge=document.getElementById('userBadge');const bn=document.getElementById('userBadgeName');if(s){lb.style.display='none';rb.style.display='none';badge.classList.add('show');bn.textContent='★ '+s.name.split(' ')[0].toUpperCase()+' ★';}else{lb.style.display='inline-block';rb.style.display='inline-block';badge.classList.remove('show');}}
+function registerAccount(){const name=document.getElementById("registerName").value.trim();const email=document.getElementById("registerEmail").value.trim().toLowerCase();const pw=document.getElementById("registerPassword").value;const conf=document.getElementById("confirmPassword").value;if(pw!==conf){alert("Contraseñas no coinciden");return;}const users=getUsers();if(users.some(u=>u.email===email)){alert("Correo ya registrado");return;}const nu={name,email,password:pw};users.push(nu);saveUsers(users);setSession(nu);updateAuthUI();closeModal("registerModal");alert("Cuenta creada "+name+"!");}
+function loginAccount(){const email=document.getElementById("loginEmail").value.trim().toLowerCase();const pw=document.getElementById("loginPassword").value;const users=getUsers();const f=users.find(u=>u.email===email&&u.password===pw);if(!f){alert("Correo o contraseña incorrectos");return;}setSession(f);updateAuthUI();closeModal("loginModal");}
+function logoutAccount(){clearSession();updateAuthUI();}
+function showCategory(cat){currentCategory=cat;document.getElementById("catalogo").style.display="block";document.getElementById("catalogTitle").textContent="★ "+cat.toUpperCase()+" ★";document.getElementById("search").value="";renderProducts();document.getElementById("catalogo").scrollIntoView({behavior:"smooth"})}
+function selectSize(idx,size,btn){selectedSizes[idx]=size;const card=btn.closest('.product-card');card.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+function renderProducts(){const grid=document.getElementById("productsGrid");const search=document.getElementById("search").value.toLowerCase();const sort=document.getElementById("sort").value;let filtered=products.filter(p=>p.category===currentCategory&&p.name.toLowerCase().includes(search));if(sort==="low")filtered.sort((a,b)=>a.price-b.price);if(sort==="high")filtered.sort((a,b)=>b.price-a.price);grid.innerHTML="";if(filtered.length===0){grid.innerHTML='<p style="grid-column:1/-1;text-align:center;color:#ffb6e6">No se encontraron productos ★</p>';return}filtered.forEach(product=>{const index=products.indexOf(product);let sizesHTML="";if(product.sizes){sizesHTML=`<div class="size-area"><div class="size-label">${product.isShoes?"TALLA ZAPATO:":"TALLAS:"}</div>`;product.sizes.forEach(s=>{const active=selectedSizes[index]===s?'active':'';sizesHTML+=`<button class="size-btn ${active}" onclick="selectSize(${index},'${s}',this)">${s}</button>`});sizesHTML+=`</div>`}grid.innerHTML+=`<article class="product-card"><img src="${product.image}" alt="${product.name}"><h3>${product.name}</h3><p>${product.description}</p>${sizesHTML}<div class="price">$${product.price} MXN</div><button class="add-btn" onclick="addToCart(${index})">AGREGAR A LA BOLSA ★</button></article>`})}
+function addToCart(index){const product=products[index];let talla=selectedSizes[index]||null;if(product.sizes&&!talla){alert("¡Elige una talla para "+product.name+"!");return}const ex=cart.find(i=>i.index===index&&i.talla===talla);if(ex)ex.quantity+=1;else cart.push({index,talla,quantity:1});renderCart();updateCartCount();openCart()}
+function renderCart(){const c=document.getElementById("cartItems");c.innerHTML="";if(cart.length===0){c.innerHTML='<p style="color:#ffb6e6;margin-top:30px;text-align:center">★ Tu bolsa está vacía ★</p>';document.getElementById("cartTotal").textContent="TOTAL: $0 MXN";return}let total=0;cart.forEach((item,pos)=>{const p=products[item.index];total+=p.price*item.quantity;const tag=item.talla?`<span class="size-tag">TALLA: ${item.talla}</span>`:"";c.innerHTML+=`<div class="cart-item"><h3>${p.name}</h3>${tag}<p>$${p.price} MXN</p><div class="cart-controls"><button onclick="changeCartQuantity(${pos},-1)">−</button><strong>${item.quantity}</strong><button onclick="changeCartQuantity(${pos},1)">+</button><button onclick="removeCartItem(${pos})" style="background:#ff1493">×</button></div></div>`});document.getElementById("cartTotal").textContent="TOTAL: $"+total+" MXN"}
+function changeCartQuantity(pos,ch){cart[pos].quantity+=ch;if(cart[pos].quantity<=0)cart.splice(pos,1);renderCart();updateCartCount()}
+function removeCartItem(pos){cart.splice(pos,1);renderCart();updateCartCount()}
+function updateCartCount(){const el=document.getElementById("cartCount"); if(el){el.textContent=cart.reduce((s,i)=>s+i.quantity,0)}}
+function openCart(){document.getElementById("cartPanel").classList.add("open")}
+function closeCart(){document.getElementById("cartPanel").classList.remove("open")}
+function openModal(id){document.getElementById(id).classList.add("active")}
+function closeModal(id){document.getElementById(id).classList.remove("active")}
+function openAccount(id){
+  const modal = document.getElementById(id);
+  if(!modal){
+    alert("No se encontró la ventana de inicio de sesión.");
+    return;
+  }
+  document.querySelectorAll(".modal.active").forEach(m => m.classList.remove("active"));
+  modal.classList.add("active");
+}
+function switchAccount(currentId,nextId){closeModal(currentId);openModal(nextId)}
+function recoverAccount(){
+  const email=document.getElementById("recoverEmail").value.trim().toLowerCase();
+  const newPassword=document.getElementById("recoverNewPass").value;
+  if(newPassword.length<8){alert("La nueva contraseña debe tener mínimo 8 caracteres.");return;}
+  const users=getUsers();
+  const index=users.findIndex(user=>user.email===email);
+  if(index===-1){alert("No encontramos ese correo. Verifica el correo o crea una cuenta.");return;}
+  users[index].password=newPassword;
+  saveUsers(users);
+  alert("¡Contraseña actualizada! Ya puedes iniciar sesión.");
+  document.getElementById("loginEmail").value=email;
+  document.getElementById("loginPassword").value="";
+  switchAccount("recoverModal","loginModal");
+}
+function openCheckout(){
+  if(cart.length===0){alert("Bolsa vacía");return;}
+  const s=getSession();
+  if(!s){alert("Inicia sesión para continuar con tu compra.");openModal("loginModal");return;}
+  document.getElementById("customerName").value = s.name || "";
+  document.getElementById("customerEmail").value = s.email || "";
+  openModal("checkoutModal");
+}
+function toggleCardFields(){
+  const method = document.getElementById("paymentMethod").value;
+  const box = document.getElementById("cardFields");
+  const isCard = method === "tarjeta";
+  box.style.display = isCard ? "block" : "none";
+  ["cardName","cardNumber","cardExpiry","cardCvv"].forEach(id => {
+    document.getElementById(id).required = isCard;
+  });
+}
+
+function finishCheckout(){
+  const s = getSession();
+  if(!s){alert("Inicia sesión para continuar.");closeModal("checkoutModal");openModal("loginModal");return;}
+  const total = cart.reduce((sum,i)=>sum+products[i.index].price*i.quantity,0);
+  const num = "CYB-" + Date.now().toString().slice(-6);
+  const val = id => document.getElementById(id).value.trim();
+  const payment = val("paymentMethod");
+  const address = `${val("customerStreet")} #${val("customerExt")}${val("customerInt") ? ", Int. "+val("customerInt") : ""}, ${val("customerColony")}, ${val("customerCity")}, ${val("customerState")}, C.P. ${val("customerZip")}`;
+  const safe = value => String(value).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+  const paymentLabel = payment === "tarjeta" ? "Tarjeta (DEMO)" : "Pago al recibir";
+  document.getElementById("successText").innerHTML = `Gracias <b>${safe(val("customerName"))}</b> ★ Tu pedido <b>${num}</b> fue registrado como DEMO.`;
+  document.getElementById("successSummary").innerHTML =
+    `<b>Pedido:</b> ${num}<br><b>Cliente:</b> ${safe(val("customerName"))}<br><b>Correo:</b> ${safe(val("customerEmail"))}<br><b>Teléfono:</b> ${safe(val("customerPhone"))}<br><b>Dirección:</b> ${safe(address)}<br><b>Referencias:</b> ${safe(val("customerReference") || "Sin referencias")}<br><b>Pago:</b> ${paymentLabel}<br><br><b>Productos:</b><br>${cart.map(c=>`• ${safe(products[c.index].name)} ${c.talla?`(Talla ${safe(c.talla)})`:""} x${c.quantity}`).join("<br>")}<br><br><b>Total: $${total.toFixed(2)} MXN</b>`;
+  closeModal("checkoutModal");
+  openModal("orderSuccessModal");
+  cart=[];selectedSizes={};renderCart();updateCartCount();renderProducts();closeCart();
+}
+function scrollToCategories(){document.getElementById("categorias").scrollIntoView({behavior:"smooth"})}
+function scrollToMission(){document.getElementById("mision").scrollIntoView({behavior:"smooth",block:"start"})}
+function goHome(){document.getElementById("catalogo").style.display="none";currentCategory="";window.scrollTo({top:0,behavior:"smooth"})}
+renderCart();updateCartCount();updateAuthUI();
+
+</script>
+</body>
+</html>
